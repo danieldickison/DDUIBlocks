@@ -8,9 +8,40 @@ About
 
 A collection of wrappers around various UIKit classes to give them blocks-based APIs.
 
-The advantage of using blocks is that you can keep your event-handling logic closer to other related bits of code. For example, the `DDBlockAlert` class lets you add buttons along with the handler block, instead of having to create a separate method in a delegate that branches based on the clicked button index.
+The advantage of using blocks is that you can keep your event-handling logic closer to other related bits of code. For example, the `DDBlockAlert` class lets you add buttons along with the handler block, instead of having to create a separate method in a delegate that branches based on the clicked button index.  It saves even more branching when a single delegate must be able to handle multiple different alerts.
 
-`DDBlockTableDelegate` is a `UITableViewDelegate` and `UITableViewDataSource` that lets you specify cell specs from which the various table cell bahaviors are derived.  This is in contrast to the "normal" way of having your data source method branch depending on the cell indexPath that is passed in.  The blocks-based API is particularly suited for tables which few but greatly varying cells, for example in a settings-type UI where each cell holds a different type of interactive UI element.  It is less suited for long, homogeneous lists as it creates a cell spec object for each row, which may be inefficient (however you can reuse the handler blocks, so it might not be so bad).
+`DDBlockTableDelegate` is a `UITableViewDelegate` and `UITableViewDataSource` that lets you specify cell specs from which the various table cell behaviors are derived.  This is in contrast to the "normal" way of having your data source method branch depending on the cell indexPath that is passed in.  The blocks-based API is particularly suited for tables which have few but greatly varying cells, for example in a settings-type UI where each cell holds a different type of interactive UI element.  It is less suited for long, homogeneous lists as it creates a cell spec object for each row, which may be inefficient. (However you can reuse the handler blocks, so it might not be so bad.)
+
+### Before ###
+
+    // An ivar:
+    UIAlertView *fooBarAlert;
+
+    // Elsewhere, to bring up the alert.
+    fooBarAlert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Message" cancelButtonTitle:@"Cancel" otherButtonTitles:@"Foo", @"Bar", nil];
+    fooBarAlert.delegate = self;
+    [alert show];
+
+    // Elsewhere
+    - (void)alertView:(UIAlertView *)alert clickedButtonAtIndex:(NSInteger)buttonIndex
+    {
+        if (alert == fooBarAlert)
+        {
+            if (buttonIndex == 1)
+                NSLog(@"Tapped foo.");
+            else if (buttonIndex == 2)
+                NSLog(@"Tapped bar.");
+        }
+        // else handle other alerts.
+    }
+
+### After ###
+
+    DDBlockAlert *alert = [DDBlockAlert alertWithTitle:@"Title" message:@"Message"];
+    [alert addCancelButtonWithTitle:@"Cancel" handler:^{}];
+    [alert addButtonWithTitle:@"Foo" handler:^{NSLog(@"Tapped foo.");}];
+    [alert addButtonWithTitle:@"Bar" handler:^{NSLog(@"Tapped bar.");}];
+    [alert show];
 
 Usage
 -----
@@ -28,13 +59,8 @@ The workaround is to use the `__block` modifier for any local variables to which
 
 For more info on blocks and retain cycles, see these links:
 
-http://www.mikeash.com/pyblog/friday-qa-2010-04-30-dealing-with-retain-cycles.html
-
-http://borkwarellc.wordpress.com/2010/09/06/block-retain-cycles/
-
-http://stackoverflow.com/questions/4352561/retain-cycle-on-self-with-blocks
-
-http://rentzsch.tumblr.com/post/3946232049/avoiding-retain-cycles-with-blocks
+* [mikeash.com: Dealing With Retain Cycles](http://www.mikeash.com/pyblog/friday-qa-2010-04-30-dealing-with-retain-cycles.html)
+* [Borkware Miniblog: Block Retain Cycles](http://borkwarellc.wordpress.com/2010/09/06/block-retain-cycles/)
 
 License
 -------
