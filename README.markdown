@@ -1,9 +1,7 @@
 DDUIBlocks
 ==========
 
-Daniel Dickison [<danieldickison@gmail.com>][email]
-
-[email]: danieldickison@gmail.com
+Daniel Dickison
 
 About
 -----
@@ -31,8 +29,11 @@ The workaround is to use the `__block` modifier for any local variables to which
 For more info on blocks and retain cycles, see these links:
 
 http://www.mikeash.com/pyblog/friday-qa-2010-04-30-dealing-with-retain-cycles.html
+
 http://borkwarellc.wordpress.com/2010/09/06/block-retain-cycles/
+
 http://stackoverflow.com/questions/4352561/retain-cycle-on-self-with-blocks
+
 http://rentzsch.tumblr.com/post/3946232049/avoiding-retain-cycles-with-blocks
 
 License
