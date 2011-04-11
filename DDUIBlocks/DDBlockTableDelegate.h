@@ -64,7 +64,7 @@ typedef void (^DDBlockTableCellConfigBlock)(UITableViewCell *cell);
 - (id)initWithReuseIdentifier:(NSString *)identifier;
 + (DDBlockTableCellSpec *)cellSpecWithReuseIdentifier:(NSString *)identifier;
 
-// configurationBlock is the only required callback. Use cellSpec.sectionSpec.tableViewDelegate.currentCell to access the cell instance.
+// configurationBlock is the only required callback. The freshly created or recycled cell is passed in as a parameter.
 @property (nonatomic, copy) DDBlockTableCellConfigBlock configurationBlock;
 
 @property (nonatomic, copy) DDBlockTableFloatBlock heightBlock;
