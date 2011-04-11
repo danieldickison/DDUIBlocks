@@ -16,6 +16,10 @@
 		0BE0D49B1352577600639DF9 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BE0D4991352577600639DF9 /* MainWindow.xib */; };
 		0BE0D49E1352577600639DF9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0D49D1352577600639DF9 /* RootViewController.m */; };
 		0BE0D4A11352577600639DF9 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BE0D49F1352577600639DF9 /* RootViewController.xib */; };
+		0BE0D4AD1352688000639DF9 /* DDBlockTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0D4AC1352688000639DF9 /* DDBlockTableDelegate.m */; };
+		0BE0D4B6135269C300639DF9 /* DDBlockAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0D4B5135269C300639DF9 /* DDBlockAlert.m */; };
+		0BE0D4B8135271A400639DF9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0D4B7135271A400639DF9 /* AudioToolbox.framework */; };
+		0BE0D4BB135273DC00639DF9 /* TableDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0D4BA135273DC00639DF9 /* TableDemoController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +27,24 @@
 		0BE0D4871352577600639DF9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0BE0D4891352577600639DF9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0BE0D48B1352577600639DF9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		0BE0D48F1352577600639DF9 /* DDUIBlockDemo-Info.plist */ = {isa = PBXFileReference; path = "DDUIBlockDemo-Info.plist"; sourceTree = "<group>"; };
+		0BE0D48F1352577600639DF9 /* DDUIBlockDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DDUIBlockDemo-Info.plist"; sourceTree = "<group>"; };
 		0BE0D4911352577600639DF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0BE0D4931352577600639DF9 /* DDUIBlockDemo-Prefix.pch */ = {isa = PBXFileReference; path = "DDUIBlockDemo-Prefix.pch"; sourceTree = "<group>"; };
+		0BE0D4931352577600639DF9 /* DDUIBlockDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DDUIBlockDemo-Prefix.pch"; sourceTree = "<group>"; };
 		0BE0D4941352577600639DF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0BE0D4961352577600639DF9 /* DDUIBlockDemoAppDelegate.h */ = {isa = PBXFileReference; path = DDUIBlockDemoAppDelegate.h; sourceTree = "<group>"; };
+		0BE0D4961352577600639DF9 /* DDUIBlockDemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDUIBlockDemoAppDelegate.h; sourceTree = "<group>"; };
 		0BE0D4971352577600639DF9 /* DDUIBlockDemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDUIBlockDemoAppDelegate.m; sourceTree = "<group>"; };
 		0BE0D49A1352577600639DF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		0BE0D49C1352577600639DF9 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		0BE0D49C1352577600639DF9 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		0BE0D49D1352577600639DF9 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		0BE0D4A01352577600639DF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		0BE0D4AB1352688000639DF9 /* DDBlockTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDBlockTableDelegate.h; sourceTree = "<group>"; };
+		0BE0D4AC1352688000639DF9 /* DDBlockTableDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDBlockTableDelegate.m; sourceTree = "<group>"; };
+		0BE0D4B4135269C300639DF9 /* DDBlockAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDBlockAlert.h; sourceTree = "<group>"; };
+		0BE0D4B5135269C300639DF9 /* DDBlockAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDBlockAlert.m; sourceTree = "<group>"; };
+		0BE0D4B7135271A400639DF9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0BE0D4B9135273DC00639DF9 /* TableDemoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableDemoController.h; sourceTree = "<group>"; };
+		0BE0D4BA135273DC00639DF9 /* TableDemoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableDemoController.m; sourceTree = "<group>"; };
+		0BE0D4BC1352764000639DF9 /* DDUIBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUIBlocks.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE0D4B8135271A400639DF9 /* AudioToolbox.framework in Frameworks */,
 				0BE0D4881352577600639DF9 /* UIKit.framework in Frameworks */,
 				0BE0D48A1352577600639DF9 /* Foundation.framework in Frameworks */,
 				0BE0D48C1352577600639DF9 /* CoreGraphics.framework in Frameworks */,
@@ -69,6 +82,7 @@
 		0BE0D4861352577600639DF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0BE0D4B7135271A400639DF9 /* AudioToolbox.framework */,
 				0BE0D4871352577600639DF9 /* UIKit.framework */,
 				0BE0D4891352577600639DF9 /* Foundation.framework */,
 				0BE0D48B1352577600639DF9 /* CoreGraphics.framework */,
@@ -85,6 +99,9 @@
 				0BE0D49C1352577600639DF9 /* RootViewController.h */,
 				0BE0D49D1352577600639DF9 /* RootViewController.m */,
 				0BE0D49F1352577600639DF9 /* RootViewController.xib */,
+				0BE0D4B9135273DC00639DF9 /* TableDemoController.h */,
+				0BE0D4BA135273DC00639DF9 /* TableDemoController.m */,
+				0BE0D4AA1352688000639DF9 /* DDUIBlocks */,
 				0BE0D48E1352577600639DF9 /* Supporting Files */,
 			);
 			path = DDUIBlockDemo;
@@ -100,6 +117,18 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		0BE0D4AA1352688000639DF9 /* DDUIBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0D4BC1352764000639DF9 /* DDUIBlocks.h */,
+				0BE0D4AB1352688000639DF9 /* DDBlockTableDelegate.h */,
+				0BE0D4AC1352688000639DF9 /* DDBlockTableDelegate.m */,
+				0BE0D4B4135269C300639DF9 /* DDBlockAlert.h */,
+				0BE0D4B5135269C300639DF9 /* DDBlockAlert.m */,
+			);
+			path = DDUIBlocks;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -164,6 +193,9 @@
 				0BE0D4951352577600639DF9 /* main.m in Sources */,
 				0BE0D4981352577600639DF9 /* DDUIBlockDemoAppDelegate.m in Sources */,
 				0BE0D49E1352577600639DF9 /* RootViewController.m in Sources */,
+				0BE0D4AD1352688000639DF9 /* DDBlockTableDelegate.m in Sources */,
+				0BE0D4B6135269C300639DF9 /* DDBlockAlert.m in Sources */,
+				0BE0D4BB135273DC00639DF9 /* TableDemoController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +238,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -220,7 +252,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;

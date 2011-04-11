@@ -7,138 +7,122 @@
 //
 
 #import "RootViewController.h"
+#import "DDUIBlocks.h"
+#import "TableDemoController.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @implementation RootViewController
+
+
+- (void)dealloc
+{
+    [tableDelegate release];
+    [super dealloc];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Note that each cell and section spec should be declared with the __block modifier. This prevents a retain loop if you need to refer to the cell spec within one of its own callback blocks. Without __block, the block retains the cell spec, and the cell spec retains the block, resulting in a leak.
+    // Also, if you need to refer to self or an ivar of self, you should create a local __block variable pointing to self, for much the same reason.
+    
+    __block RootViewController *blockSelf = self;
+    
+    __block DDBlockTableCellSpec *tableCellSpec = [DDBlockTableCellSpec cellSpecWithReuseIdentifier:@"generic"];
+    tableCellSpec.configurationBlock = ^(UITableViewCell *cell)
+    {
+        cell.textLabel.text = @"DDBlockTableDelegate";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    };
+    tableCellSpec.selectedBlock = ^()
+    {
+        TableDemoController *tableController = [[[TableDemoController alloc] init] autorelease];
+        [self.navigationController pushViewController:tableController animated:YES];
+    };
+    
+    // This is used to deselect the current row after the alerts/sheets.
+    void (^deselectRow)() = ^()
+    {
+        [blockSelf.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    };
+    
+    // DDBlockAlert Demo
+    
+    __block DDBlockTableCellSpec *alertCellSpec = [DDBlockTableCellSpec cellSpecWithReuseIdentifier:@"generic"];
+    alertCellSpec.configurationBlock = ^(UITableViewCell *cell)
+    {
+        cell.textLabel.text = @"DDBlockAlert";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    };
+    alertCellSpec.selectedBlock = ^()
+    {
+        DDBlockAlert *alert = [DDBlockAlert alertWithTitle:@"DDBlockAlert" message:@"Hello there."];
+        [alert addButtonWithTitle:@"Another" handler:^
+         {
+             DDBlockAlert *another = [DDBlockAlert alertWithTitle:@"Another" message:@"Turtles all the way down."];
+             [another addCancelButtonWithTitle:@"Dismiss" handler:deselectRow];
+             [another show];
+         }];
+        [alert addCancelButtonWithTitle:@"Cancel" handler:deselectRow];
+        [alert show];
+    };
+    
+    // DDBlockActionSheet Demo
+    
+    __block DDBlockTableCellSpec *sheetCellSpec = [DDBlockTableCellSpec cellSpecWithReuseIdentifier:@"generic"];
+    sheetCellSpec.configurationBlock = ^(UITableViewCell *cell)
+    {
+        cell.textLabel.text = @"DDBlockActionSheet";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    };
+    sheetCellSpec.selectedBlock = ^()
+    {
+        DDBlockActionSheet *sheet = [DDBlockActionSheet actionSheetWithTitle:@"DDBlockActionSheet"];
+        [sheet addDestructiveButtonWithTitle:@"Destruct!" handler:^{
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+            deselectRow();
+        }];
+        [sheet addButtonWithTitle:@"Normal" handler:deselectRow];
+        [sheet addCancelButtonWithTitle:@"Cancel" handler:deselectRow];
+        [sheet showInView:self.view];
+    };
+    
+    // Set up the table datasource/delegae.
+    
+    __block DDBlockTableSectionSpec *section1 = [DDBlockTableSectionSpec sectionSpecWithCellSpecs:
+                                                 tableCellSpec, alertCellSpec, sheetCellSpec, nil];
+    
+    tableDelegate = [[DDBlockTableDelegate alloc] init];
+    tableDelegate.sectionSpecs = [NSArray arrayWithObjects:section1, nil];
+    self.tableView.dataSource = tableDelegate;
+    self.tableView.delegate = tableDelegate;
+    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-/*
- // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
- */
-
-// Customize the number of sections in the table view.
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 0;
-}
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-
-    // Configure the cell.
-    return cell;
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert)
-    {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-	*/
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc that aren't in use.
+    [self.tableView flashScrollIndicators];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
 
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
+    [tableDelegate release];
+    tableDelegate = nil;
 }
 
-- (void)dealloc
+- (UITableView *)tableView
 {
-    [super dealloc];
+    return (UITableView *)self.view;
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  RootViewController.h
+//  TableDemoController.h
 //  DDUIBlockDemo
 //
 //  Created by Daniel Dickison on 4/10/11.
@@ -10,12 +10,10 @@
 
 @class DDBlockTableDelegate;
 
-@interface RootViewController : UIViewController
+@interface TableDemoController : UIViewController
 {
 @private
     DDBlockTableDelegate *tableDelegate;
 }
-
-@property (readonly) UITableView *tableView;
 
 @end
