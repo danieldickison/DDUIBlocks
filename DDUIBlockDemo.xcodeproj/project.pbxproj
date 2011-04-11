@@ -20,6 +20,7 @@
 		0BE0D4B6135269C300639DF9 /* DDBlockAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0D4B5135269C300639DF9 /* DDBlockAlert.m */; };
 		0BE0D4B8135271A400639DF9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0D4B7135271A400639DF9 /* AudioToolbox.framework */; };
 		0BE0D4BB135273DC00639DF9 /* TableDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0D4BA135273DC00639DF9 /* TableDemoController.m */; };
+		0BE0D4C613529C4300639DF9 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 0BE0D4C513529C4300639DF9 /* README.markdown */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		0BE0D4B9135273DC00639DF9 /* TableDemoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableDemoController.h; sourceTree = "<group>"; };
 		0BE0D4BA135273DC00639DF9 /* TableDemoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableDemoController.m; sourceTree = "<group>"; };
 		0BE0D4BC1352764000639DF9 /* DDUIBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUIBlocks.h; sourceTree = "<group>"; };
+		0BE0D4C513529C4300639DF9 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		0BE0D4781352577600639DF9 = {
 			isa = PBXGroup;
 			children = (
+				0BE0D4C513529C4300639DF9 /* README.markdown */,
 				0BE0D48D1352577600639DF9 /* DDUIBlockDemo */,
 				0BE0D4861352577600639DF9 /* Frameworks */,
 				0BE0D4841352577600639DF9 /* Products */,
@@ -180,6 +183,7 @@
 				0BE0D4921352577600639DF9 /* InfoPlist.strings in Resources */,
 				0BE0D49B1352577600639DF9 /* MainWindow.xib in Resources */,
 				0BE0D4A11352577600639DF9 /* RootViewController.xib in Resources */,
+				0BE0D4C613529C4300639DF9 /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +312,7 @@
 				0BE0D4A61352577600639DF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
