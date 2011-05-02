@@ -20,6 +20,30 @@
     [super dealloc];
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder]))
+    {
+        // Create toolbar items.
+        self.toolbarItems =
+        [NSArray arrayWithObjects:
+         [DDBlockBarButtonItem barButtonItemWithTitle:@"Foo" style:UIBarButtonItemStyleBordered handler:^
+           {
+               DDBlockAlert *alert = [DDBlockAlert alertWithTitle:@"Foo!" message:@"You tapped Foo."];
+               [alert addCancelButtonWithTitle:@"Dismiss" handler:^{}];
+               [alert show];
+           }],
+         [DDBlockBarButtonItem barButtonItemWithTitle:@"Bar" style:UIBarButtonItemStyleDone handler:^
+           {
+               DDBlockAlert *alert = [DDBlockAlert alertWithTitle:@"Bar!" message:@"You tapped Bar."];
+               [alert addCancelButtonWithTitle:@"Dismiss" handler:^{}];
+               [alert show];
+           }],
+         nil];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -88,7 +112,7 @@
         [sheet showInView:self.view];
     };
     
-    // Set up the table datasource/delegae.
+    // Set up the table datasource/delegate.
     
     __block DDBlockTableSectionSpec *section1 = [DDBlockTableSectionSpec sectionSpecWithCellSpecs:
                                                  tableCellSpec, alertCellSpec, sheetCellSpec, nil];

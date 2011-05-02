@@ -14,6 +14,8 @@
 
 - (void)viewDidLoad
 {
+    __block TableDemoController *blockSelf = self;
+    
     UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
     tableView.tag = 42;
     tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -100,6 +102,20 @@
     tableView.allowsSelectionDuringEditing = NO;
     
     self.navigationItem.rightBarButtonItem = [self editButtonItem];
+    
+    
+    // Create toolbar items.
+    self.toolbarItems =
+    [NSArray arrayWithObjects:
+     [DDBlockBarButtonItem barButtonItemWithTitle:@"Pop" style:UIBarButtonItemStyleBordered handler:^
+       {
+           [blockSelf.navigationController popViewControllerAnimated:YES];
+       }],
+     [DDBlockBarButtonItem barButtonItemWithTitle:@"Pop sans animation" style:UIBarButtonItemStyleDone handler:^
+       {
+           [blockSelf.navigationController popViewControllerAnimated:NO];
+       }],
+     nil];
 }
 
 - (void)viewDidUnload

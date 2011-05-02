@@ -8,3 +8,4 @@
 
 #import "DDBlockTableDelegate.h"
 #import "DDBlockAlert.h"
+#import "DDBlockBarButtonItem.h"

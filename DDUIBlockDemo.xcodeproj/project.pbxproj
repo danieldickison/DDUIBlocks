@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B04541B136E6E9B00248F04 /* DDBlockBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B04541A136E6E9B00248F04 /* DDBlockBarButtonItem.m */; };
 		0BE0D4881352577600639DF9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0D4871352577600639DF9 /* UIKit.framework */; };
 		0BE0D48A1352577600639DF9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0D4891352577600639DF9 /* Foundation.framework */; };
 		0BE0D48C1352577600639DF9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0D48B1352577600639DF9 /* CoreGraphics.framework */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B045419136E6E9B00248F04 /* DDBlockBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDBlockBarButtonItem.h; sourceTree = "<group>"; };
+		0B04541A136E6E9B00248F04 /* DDBlockBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDBlockBarButtonItem.m; sourceTree = "<group>"; };
 		0BE0D4831352577600639DF9 /* DDUIBlockDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDUIBlockDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BE0D4871352577600639DF9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0BE0D4891352577600639DF9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -129,6 +132,8 @@
 				0BE0D4AC1352688000639DF9 /* DDBlockTableDelegate.m */,
 				0BE0D4B4135269C300639DF9 /* DDBlockAlert.h */,
 				0BE0D4B5135269C300639DF9 /* DDBlockAlert.m */,
+				0B045419136E6E9B00248F04 /* DDBlockBarButtonItem.h */,
+				0B04541A136E6E9B00248F04 /* DDBlockBarButtonItem.m */,
 			);
 			path = DDUIBlocks;
 			sourceTree = SOURCE_ROOT;
@@ -200,6 +205,7 @@
 				0BE0D4AD1352688000639DF9 /* DDBlockTableDelegate.m in Sources */,
 				0BE0D4B6135269C300639DF9 /* DDBlockAlert.m in Sources */,
 				0BE0D4BB135273DC00639DF9 /* TableDemoController.m in Sources */,
+				0B04541B136E6E9B00248F04 /* DDBlockBarButtonItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
